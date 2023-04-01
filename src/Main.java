@@ -55,7 +55,7 @@ public class Main {
                     //Bygger upp ett JSONObject av den returnerade datan
                     JSONObject data = (JSONObject) parser.parse((String) serverResponse.get("data"));
 
-                    Object[] newKyes = data.keySet().toArray();
+                    Object[] keyArray = data.keySet().toArray();
 
                     //Två val som låter använder antingen hämta data på en specifik person eller alla personer
                     if(message[0].equals("1")){
@@ -65,7 +65,7 @@ public class Main {
                         int val = scan.nextInt();
                         scan.nextLine();
 
-                            JSONObject person = (JSONObject) data.get(newKyes[val - 1]);
+                            JSONObject person = (JSONObject) data.get(keyArray[val - 1]);
 
                             //Skriv ut namnen, ålder eller favoritfärg för personer
 
@@ -83,7 +83,7 @@ public class Main {
                         System.out.println("Skriv in ditt menyval: ");
                         String val = scan.nextLine();
                         System.out.println("Info:");
-                        for (Object x : newKyes) {
+                        for (Object x : keyArray) {
                             JSONObject person = (JSONObject) data.get(x);
 
                             //Skriv ut namnen, ålder eller favoritfärg för personer
